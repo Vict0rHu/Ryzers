@@ -1,0 +1,15 @@
+# Copyright(C) 2026 Advanced Micro Devices, Inc. All rights reserved.
+# SPDX-License-Identifier: MIT
+
+# No GUI; avoids a spurious xhost warning on headless hosts.
+x11_display: false
+
+# Checkpoint cache, plus compiled kernels when TREX_COMPILE=1.
+volume_mappings:
+- "~/.cache/huggingface/:/root/.cache/huggingface/"
+- "~/.cache/torchinductor:/root/.cache/torchinductor"
+
+environment_variables:
+- "HF_HUB_DISABLE_XET=1"
+- "TORCH_ROCM_AOTRITON_ENABLE_EXPERIMENTAL=1"
+- "TORCHINDUCTOR_CACHE_DIR=/root/.cache/torchinductor"
